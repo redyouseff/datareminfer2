@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+
+import {Button, Col, Collapse, Container, Row} from"react-bootstrap"
+import Head from "./componant/Head.js";
+import Content from "./componant/Content.js";
+import Action from "./componant/Button.js";
+import { useState } from "react";
+
+import"./App.css"
+const person =[{id:1,name:"يوسف",time:"العاشره مساءا"},
+{id:2,name:"احمد",time:"العاشره صباحا"},
+{id:3,name:"محمد",time:"السادسه "}]
+
 
 function App() {
+  const [state,setstate]=useState(person);
+  const delet=()=>{
+    setstate([]);
+  }
+  const view=()=>{
+    setstate(person)
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Head person={state} />
+      <Content person={state} />
+      <Action  delet={delet} view={view} />
+      
+      
+   
     </div>
   );
 }
